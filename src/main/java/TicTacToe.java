@@ -1,59 +1,33 @@
 class TicTacToe {
 
-    // Method to check if a player has won
-    static boolean checkWin(char[][] board, char player) {
+    // Method to check draw
+    static boolean isDraw(char[][] board) {
 
-        // Check rows
+        // Traverse board to find empty cells
         for (int i = 0; i < 3; i++) {
-            if (board[i][0] == player &&
-                    board[i][1] == player &&
-                    board[i][2] == player) {
-                return true;
+            for (int j = 0; j < 3; j++) {
+                if (board[i][j] == ' ') {
+                    return false; // Empty cell found → not draw
+                }
             }
         }
 
-
-        // Check columns
-        for (int j = 0; j < 3; j++) {
-            if (board[0][j] == player &&
-                    board[1][j] == player &&
-                    board[2][j] == player) {
-                return true;
-            }
-        }
-
-        // Check main diagonal
-        if (board[0][0] == player &&
-                board[1][1] == player &&
-                board[2][2] == player) {
-            return true;
-        }
-
-        // Check anti-diagonal
-        if (board[0][2] == player &&
-                board[1][1] == player &&
-                board[2][0] == player) {
-            return true;
-        }
-
-        return false;
+        return true; // No empty cells → draw (if no winner)
     }
 
-    // Main method for testing
+    // Example main method
     public static void main(String[] args) {
 
         char[][] board = {
                 {'X', 'O', 'X'},
                 {'O', 'X', 'O'},
-                {'O', 'X', 'X'}
+                {'O', 'X', 'O'}
         };
 
-        char player = 'X';
-
-        if (checkWin(board, player)) {
-            System.out.println("Player " + player + " wins!");
+        if (isDraw(board)) {
+            System.out.println("Match is a Draw!");
         } else {
-            System.out.println("No winner yet.");
+            System.out.println("Game is still ongoing.");
         }
     }
 }
