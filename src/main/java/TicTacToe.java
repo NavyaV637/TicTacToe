@@ -1,47 +1,34 @@
+import java.util.Random;
+
 public class TicTacToe {
-
-    // 3x3 board
-    static char[][] board = new char[3][3];
-
     public static void main(String[] args) {
 
-        initializeBoard();   // fill board with '-'
-        printBoard();        // display board
+        Random rand = new Random();
+        int toss = rand.nextInt(2);
 
-    }
-    // initialize board with '-'
-    static void initializeBoard() {
+        String player1 = "Player 1";
+        String player2 = "Player 2";
 
-        for (int row = 0; row < 3; row++) {
+        char player1Symbol, player2Symbol;
+        String currentPlayer;
+        char currentSymbol;
 
-            for (int col = 0; col < 3; col++) {
-
-                board[row][col] = '-';
-
-            }
-
+        if (toss == 0) {
+            currentPlayer = player1;
+            player1Symbol = 'X';
+            player2Symbol = 'O';
+            currentSymbol = player1Symbol;
+        } else {
+            currentPlayer = player2;
+            player2Symbol = 'X';
+            player1Symbol = 'O';
+            currentSymbol = player2Symbol;
         }
 
+        System.out.println("Toss Result: " + toss);
+        System.out.println(currentPlayer + " will start first.");
+        System.out.println(player1 + " symbol: " + player1Symbol);
+        System.out.println(player2 + " symbol: " + player2Symbol);
+        System.out.println("Current Player: " + currentPlayer + " (" + currentSymbol + ")");
     }
-
-    // print board clearly
-    static void printBoard() {
-
-        System.out.println("-------------");
-
-        for (int row = 0; row < 3; row++) {
-
-            for (int col = 0; col < 3; col++) {
-
-                System.out.print("| " + board[row][col] + " ");
-
-            }
-
-            System.out.println("|");
-            System.out.println("-------------");
-
-        }
-
-    }
-
 }
